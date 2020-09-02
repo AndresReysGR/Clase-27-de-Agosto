@@ -9,13 +9,24 @@ from thinkdsp import decorate
 import matplotlib.pyplot as plt
 
 #Crear señal senoidal
-seno = SinSignal(freq=200, amp=0.7, offset=0)
-coseno = CosSignal(freq=800, amp=1.1, offset=0)
+seno = SinSignal(freq=20, amp=1, offset=0)
+coseno = CosSignal(freq=50, amp=1.3, offset=0)
+
+waveSeno = seno.make_wave(duration=1, start=0, framerate=11025)
+waveCoseno = coseno.make_wave(duration=1, start=0, framerate=11025)
+
+waveResultante = waveSeno + waveCoseno
 
 #CrEAR GRAFICA EN MEMORIA
-seno.plot()
+
 decorate(xlabel='Tiempo (s)')
 decorate(ylabel='Amplitud')
-coseno.plot()
 
+waveSeno.plot()
+waveCoseno.plot()
+plt.show()
+
+decorate(xlabel="Tiempo (s)")
+decorate(xlabel="Amplitud")
+waveResultante.plot()
 plt.show()
